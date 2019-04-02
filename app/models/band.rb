@@ -1,5 +1,8 @@
 class Band < ApplicationRecord
   belongs_to :user
   has_many :bookings
-  validates :date, presence: true
+  validates :name, presence: true
+  validates :location, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
 end
