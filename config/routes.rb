@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users, only: [:show, :new, :create] do
-        resources :bands, only: [:index, :show, :new, :create]
-        resources :bookings, only: [:index]
+        resources :bands, only: [:new, :create]
+        # resources :bookings, only: [:index]
       end
       resources :bands, only: [:index, :show]
     end
