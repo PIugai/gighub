@@ -1,4 +1,5 @@
 require 'faker'
+require 'date'
 
 # Create 50 users in order to create 50 bands, since each band must have a user (band has user as a foreign ID)
 50.times do
@@ -28,5 +29,10 @@ User.all.each do |user|
   new_band = Band.create(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user)
 end
 
+20.times do
+  Booking.create(user_id: User.all.sample.id, band_id: Band.all.sample.id, date: Date.today)
+end
+
 p "#{User.count} users have been seeded to database"
 p "#{Band.count} bands have been seeded to database"
+p "#{Booking.count} bookings have been seeded to database"
