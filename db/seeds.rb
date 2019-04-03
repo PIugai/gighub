@@ -17,6 +17,7 @@ end
 # user_id
 
 counter = 0
+
 User.all.each do |user|
   name1 = Faker::Kpop.i_groups
   name2 = Faker::Music::RockBand.name
@@ -28,6 +29,7 @@ User.all.each do |user|
   lorem = Faker::Lorem.paragraph(rand(2..4))
   randomlinks = "https://v.youku.com/v_show/id_XODMzNDcwMzM2.html"
   randomstyle = %w(Dubstep Folk Pop Opera Rock Country Rap Trance Latin Gospel J-pop Ska Reggae Bhangra Trip-hop).sample
+
   # every band has the same video for now... unless we have time to seed more variety
   new_band = Band.create(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user, style: randomstyle)
 end
