@@ -30,7 +30,7 @@ class Api::V1::BandsController < Api::V1::BaseController
   end
 
   def band_params
-    params.require(:band).permit(:name, :photo, :location, :price, :description, :link)
+    params.require(:band).permit(:name, :photo, :location, :price, :description, :link, :style)
   end
 
   def render_error
