@@ -7,7 +7,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
     @booking = Booking.new(booking_params)
     if @booking.save
       status: :created
-    elese
+    else
       render_error
     end
   end
