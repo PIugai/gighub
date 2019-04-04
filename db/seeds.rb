@@ -29,12 +29,18 @@ User.all.each do |user|
   lorem = Faker::Lorem.paragraph(rand(2..4))
   randomlinks = "https://v.youku.com/v_show/id_XODMzNDcwMzM2.html"
   randomstyle = %w(Dubstep Folk Opera Rock Country Rap Trance Latin Gospel J-pop Ska Reggae Bhangra Trip-hop).sample
-  randomtag = %w(weddings cash-only popular deposit-required strong-language French verified Dutch new-band Español bar-mitzvah late-nights).sample
+  randomtag1 = %w(French verified Dutch new-band Español bar-mitzvah late-nights).sample
+  randomtag2 = %w(weddings cash-only popular deposit-required strong-language).sample
+  randomtag3 = %w(trending songwriter 80s-covers acapella).sample
 
   # every band has the same video link for now... unless we have time to seed more variety
-  new_band = Band.new(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user, style: randomstyle, tag_list: randomstyle)
-  new_band.tag_list.add(randomtag)
+  new_band = Band.new(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user, style: randomstyle, tag_list: randomtag1)
+  new_band.tag_list.add(randomtag2)
   new_band.save
+  if new_band.id%2 == 0
+    new_band.tag_list.add(randomtag3)
+    new_band.save
+  end
 end
 
 20.times do
