@@ -10,18 +10,12 @@ class Api::V1::BandsController < Api::V1::BaseController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @band = Band.new
   end
 
   def create
     @band = Band.new(band_params)
-    @band.user = User.find(params[:user_id])
-    if @band.save
-      render :show, status: :created
-    else
-      render_error
-    end
+    @band.save
   end
 
   def tagged
