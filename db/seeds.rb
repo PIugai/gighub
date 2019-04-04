@@ -28,10 +28,13 @@ User.all.each do |user|
   randomcost = [100, 120, 150, 199, 250, 280, 500, 800, 1500, 2000, 10000].sample
   lorem = Faker::Lorem.paragraph(rand(2..4))
   randomlinks = "https://v.youku.com/v_show/id_XODMzNDcwMzM2.html"
-  randomstyle = %w(Dubstep Folk Pop Opera Rock Country Rap Trance Latin Gospel J-pop Ska Reggae Bhangra Trip-hop).sample
+  randomstyle = %w(Dubstep Folk Opera Rock Country Rap Trance Latin Gospel J-pop Ska Reggae Bhangra Trip-hop).sample
+  randomtag = %w(weddings cash-only popular deposit-required strong-language French verified Dutch new-band Español bar-mitzvah late-nights).sample
 
-  # every band has the same video for now... unless we have time to seed more variety
-  new_band = Band.create(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user, style: randomstyle)
+  # every band has the same video link for now... unless we have time to seed more variety
+  new_band = Band.new(name: bandname, photo: photoURL, location: city, price: randomcost, description: lorem, link: randomlinks, user: user, style: randomstyle, tag_list: randomstyle)
+  new_band.tag_list.add(randomtag)
+  new_band.save
 end
 
 20.times do
