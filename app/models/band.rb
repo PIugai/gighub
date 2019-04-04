@@ -6,4 +6,5 @@ class Band < ApplicationRecord
   validates :location, presence: true
   validates :price, presence: true
   validates :description, presence: true
+  acts_as_taggable_on :tags
 end

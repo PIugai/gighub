@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         # resources :bookings, only: [:index]
       end
       resources :bands, only: [:index, :show]
+      get '/tagged', to: "bands#tagged", as: :tagged
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
