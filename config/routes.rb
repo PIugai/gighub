@@ -4,11 +4,9 @@ Rails.application.routes.draw do
   # root to: 'pages#home'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :users, only: [:show, :new, :create] do
-        resources :bands, only: [:new, :create]
-        # resources :bookings, only: [:index]
-      end
-      resources :bands, only: [:index, :show]
+      resources :users, only: [:show, :new, :create]
+      resources :bands, only: [:index, :show, :new, :create]
+      resources :bookings, only: [:new, :create]
       get '/tagged', to: "bands#tagged", as: :tagged
     end
   end
