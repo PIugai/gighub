@@ -6,6 +6,7 @@ class Api::V1::BandsController < Api::V1::BaseController
   end
 
   def show
+    @related_bands = @band.find_related_tags
   end
 
   def new
@@ -23,6 +24,14 @@ class Api::V1::BandsController < Api::V1::BaseController
     end
   end
 
+  def tagged
+    if params[:tag].present?
+      @bands = Band.tagged_with(params[:tag])
+    else
+      @bands = Band.all
+    end
+  end
+
   private
 
   def set_band
@@ -30,7 +39,7 @@ class Api::V1::BandsController < Api::V1::BaseController
   end
 
   def band_params
-    params.require(:band).permit(:name, :photo, :location, :price, :description, :link, :style)
+    params.require(:band).permit(:name, :photo, :location, :price, :description, :link, :style, tag_list: [])
   end
 
   def render_error
