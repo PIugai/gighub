@@ -5,11 +5,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
 
   def create
     @booking = Booking.new(booking_params)
-    if @booking.save
-      status: :created
-    else
-      render_error
-    end
+    @booking.save
   end
 
   private
