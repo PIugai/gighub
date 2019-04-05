@@ -22,7 +22,7 @@ User.all.each do |user|
   name1 = Faker::Kpop.i_groups
   name2 = Faker::Music::RockBand.name
   bandname = [name1, name2].sample
-  photoURL = "http://loremflickr.com/300/#{150+counter}/rockband"
+  photoURL = "http://loremflickr.com/300/#{150+counter}/music"
   counter += 1
   city = %w(Shanghai Beijing Shenzhen Chengdu Hangzhou Nanjing Chongqing).sample
   randomcost = [100, 120, 150, 199, 250, 280, 500, 800, 1500, 2000, 10000].sample
